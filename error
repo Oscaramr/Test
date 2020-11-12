@@ -1,0 +1,217 @@
+Traceback (most recent call last):
+  File "/home/oscar/.local/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1276, in _execute_context
+    self.dialect.do_execute(
+  File "/home/oscar/.local/lib/python3.8/site-packages/sqlalchemy/engine/default.py", line 593, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.IntegrityError: NOT NULL constraint failed: task.session
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/oscar/.local/lib/python3.8/site-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/oscar/.local/lib/python3.8/site-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/oscar/.local/lib/python3.8/site-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/oscar/.local/lib/python3.8/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/home/oscar/.local/lib/python3.8/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/oscar/.local/lib/python3.8/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/oscar/.local/lib/python3.8/site-packages/flask_login/utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "/home/oscar/byob/web-gui/buildyourownbotnet/api/session/routes.py", line 68, in session_cmd
+    result = database.handle_task(response)
+  File "/home/oscar/byob/web-gui/buildyourownbotnet/core/database.py", line 266, in handle_task
+    db.session.commit()
+  File "/home/oscar/.local/lib/python3.8/site-packages/sqlalchemy/orm/scoping.py", line 163, in do
+    return getattr(self.registry(), name)(*args, **kwargs)
+  File "/home/oscar/.local/lib/python3.8/site-packages/sqlalchemy/orm/session.py", line 1042, in commit
+    self.transaction.commit()
+  File "/home/oscar/.local/lib/python3.8/site-packages/sqlalchemy/orm/session.py", line 504, in commit
+    self._prepare_impl()
+  File "/home/oscar/.local/lib/python3.8/site-packages/sqlalchemy/orm/session.py", line 483, in _prepare_impl
+    self.session.flush()
+  File "/home/oscar/.local/lib/python3.8/site-packages/sqlalchemy/orm/session.py", line 2536, in flush
+    self._flush(objects)
+  File "/home/oscar/.local/lib/python3.8/site-packages/sqlalchemy/orm/session.py", line 2678, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "/home/oscar/.local/lib/python3.8/site-packages/sqlalchemy/util/langhelpers.py", line 68, in __exit__
+    compat.raise_(
+  File "/home/oscar/.local/lib/python3.8/site-packages/sqlalchemy/util/compat.py", line 182, in raise_
+    raise exception
+  File "/home/oscar/.local/lib/python3.8/site-packages/sqlalchemy/orm/session.py", line 2638, in _flush
+    flush_context.execute()
+  File "/home/oscar/.local/lib/python3.8/site-packages/sqlalchemy/orm/unitofwork.py", line 422, in execute
+    rec.execute(self)
+  File "/home/oscar/.local/lib/python3.8/site-packages/sqlalchemy/orm/unitofwork.py", line 586, in execute
+    persistence.save_obj(
+  File "/home/oscar/.local/lib/python3.8/site-packages/sqlalchemy/orm/persistence.py", line 239, in save_obj
+    _emit_insert_statements(
+  File "/home/oscar/.local/lib/python3.8/site-packages/sqlalchemy/orm/persistence.py", line 1135, in _emit_insert_statements
+    result = cached_connections[connection].execute(
+  File "/home/oscar/.local/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1011, in execute
+    return meth(self, multiparams, params)
+  File "/home/oscar/.local/lib/python3.8/site-packages/sqlalchemy/sql/elements.py", line 298, in _execute_on_connection
+    return connection._execute_clauseelement(self, multiparams, params)
+  File "/home/oscar/.local/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1124, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/home/oscar/.local/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1316, in _execute_context
+    self._handle_dbapi_exception(
+  File "/home/oscar/.local/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1510, in _handle_dbapi_exception
+    util.raise_(
+  File "/home/oscar/.local/lib/python3.8/site-packages/sqlalchemy/util/compat.py", line 182, in raise_
+    raise exception
+  File "/home/oscar/.local/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1276, in _execute_context
+    self.dialect.do_execute(
+  File "/home/oscar/.local/lib/python3.8/site-packages/sqlalchemy/engine/default.py", line 593, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.IntegrityError: (sqlite3.IntegrityError) NOT NULL constraint failed: task.session
+[SQL: INSERT INTO task (uid, task, result, issued, completed, session) VALUES (?, ?, ?, ?, ?, ?)]
+[parameters: ('6ca8ec1efd5bfb4071b7919cb8bad71f', None, 'Error: client returned invalid response: "0"', '2020-11-12 02:30:50.655389', None, None)]
+(Background on this error at: http://sqlalche.me/e/13/gkpj)
+INFO:werkzeug:192.168.1.159 - - [11/Nov/2020 21:30:50] "POST /api/session/cmd HTTP/1.1" 500 -
+ERROR:werkzeug:Error on request:
+Traceback (most recent call last):
+  File "/home/oscar/.local/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1276, in _execute_context
+    self.dialect.do_execute(
+  File "/home/oscar/.local/lib/python3.8/site-packages/sqlalchemy/engine/default.py", line 593, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.IntegrityError: NOT NULL constraint failed: task.session
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/oscar/.local/lib/python3.8/site-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/oscar/.local/lib/python3.8/site-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/oscar/.local/lib/python3.8/site-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/oscar/.local/lib/python3.8/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/home/oscar/.local/lib/python3.8/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/oscar/.local/lib/python3.8/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/oscar/.local/lib/python3.8/site-packages/flask_login/utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "/home/oscar/byob/web-gui/buildyourownbotnet/api/session/routes.py", line 68, in session_cmd
+    result = database.handle_task(response)
+  File "/home/oscar/byob/web-gui/buildyourownbotnet/core/database.py", line 266, in handle_task
+    db.session.commit()
+  File "/home/oscar/.local/lib/python3.8/site-packages/sqlalchemy/orm/scoping.py", line 163, in do
+    return getattr(self.registry(), name)(*args, **kwargs)
+  File "/home/oscar/.local/lib/python3.8/site-packages/sqlalchemy/orm/session.py", line 1042, in commit
+    self.transaction.commit()
+  File "/home/oscar/.local/lib/python3.8/site-packages/sqlalchemy/orm/session.py", line 504, in commit
+    self._prepare_impl()
+  File "/home/oscar/.local/lib/python3.8/site-packages/sqlalchemy/orm/session.py", line 483, in _prepare_impl
+    self.session.flush()
+  File "/home/oscar/.local/lib/python3.8/site-packages/sqlalchemy/orm/session.py", line 2536, in flush
+    self._flush(objects)
+  File "/home/oscar/.local/lib/python3.8/site-packages/sqlalchemy/orm/session.py", line 2678, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "/home/oscar/.local/lib/python3.8/site-packages/sqlalchemy/util/langhelpers.py", line 68, in __exit__
+    compat.raise_(
+  File "/home/oscar/.local/lib/python3.8/site-packages/sqlalchemy/util/compat.py", line 182, in raise_
+    raise exception
+  File "/home/oscar/.local/lib/python3.8/site-packages/sqlalchemy/orm/session.py", line 2638, in _flush
+    flush_context.execute()
+  File "/home/oscar/.local/lib/python3.8/site-packages/sqlalchemy/orm/unitofwork.py", line 422, in execute
+    rec.execute(self)
+  File "/home/oscar/.local/lib/python3.8/site-packages/sqlalchemy/orm/unitofwork.py", line 586, in execute
+    persistence.save_obj(
+  File "/home/oscar/.local/lib/python3.8/site-packages/sqlalchemy/orm/persistence.py", line 239, in save_obj
+    _emit_insert_statements(
+  File "/home/oscar/.local/lib/python3.8/site-packages/sqlalchemy/orm/persistence.py", line 1135, in _emit_insert_statements
+    result = cached_connections[connection].execute(
+  File "/home/oscar/.local/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1011, in execute
+    return meth(self, multiparams, params)
+  File "/home/oscar/.local/lib/python3.8/site-packages/sqlalchemy/sql/elements.py", line 298, in _execute_on_connection
+    return connection._execute_clauseelement(self, multiparams, params)
+  File "/home/oscar/.local/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1124, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/home/oscar/.local/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1316, in _execute_context
+    self._handle_dbapi_exception(
+  File "/home/oscar/.local/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1510, in _handle_dbapi_exception
+    util.raise_(
+  File "/home/oscar/.local/lib/python3.8/site-packages/sqlalchemy/util/compat.py", line 182, in raise_
+    raise exception
+  File "/home/oscar/.local/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1276, in _execute_context
+    self.dialect.do_execute(
+  File "/home/oscar/.local/lib/python3.8/site-packages/sqlalchemy/engine/default.py", line 593, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.IntegrityError: (sqlite3.IntegrityError) NOT NULL constraint failed: task.session
+[SQL: INSERT INTO task (uid, task, result, issued, completed, session) VALUES (?, ?, ?, ?, ?, ?)]
+[parameters: ('6ca8ec1efd5bfb4071b7919cb8bad71f', None, 'Error: client returned invalid response: "0"', '2020-11-12 02:30:50.655389', None, None)]
+(Background on this error at: http://sqlalche.me/e/13/gkpj)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/oscar/.local/lib/python3.8/site-packages/werkzeug/serving.py", line 323, in run_wsgi
+    execute(self.server.app)
+  File "/home/oscar/.local/lib/python3.8/site-packages/werkzeug/serving.py", line 312, in execute
+    application_iter = app(environ, start_response)
+  File "/home/oscar/.local/lib/python3.8/site-packages/flask/app.py", line 2464, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/home/oscar/.local/lib/python3.8/site-packages/flask/app.py", line 2450, in wsgi_app
+    response = self.handle_exception(e)
+  File "/home/oscar/.local/lib/python3.8/site-packages/flask/app.py", line 1879, in handle_exception
+    server_error = handler(server_error)
+  File "/home/oscar/byob/web-gui/buildyourownbotnet/errors/handlers.py", line 24, in error_500
+    return render_template("500.html"), 500
+  File "/home/oscar/.local/lib/python3.8/site-packages/flask/templating.py", line 137, in render_template
+    return _render(
+  File "/home/oscar/.local/lib/python3.8/site-packages/flask/templating.py", line 120, in _render
+    rv = template.render(context)
+  File "/home/oscar/.local/lib/python3.8/site-packages/jinja2/environment.py", line 1090, in render
+    self.environment.handle_exception()
+  File "/home/oscar/.local/lib/python3.8/site-packages/jinja2/environment.py", line 832, in handle_exception
+    reraise(*rewrite_traceback_stack(source=source))
+  File "/home/oscar/.local/lib/python3.8/site-packages/jinja2/_compat.py", line 28, in reraise
+    raise value.with_traceback(tb)
+  File "/home/oscar/byob/web-gui/buildyourownbotnet/templates/500.html", line 1, in top-level template code
+    {% extends "layout.html" %}
+  File "/home/oscar/byob/web-gui/buildyourownbotnet/templates/layout.html", line 162, in top-level template code
+    <span style="color: white; font-size: 15px">  {{ current_user.username }}
+  File "/home/oscar/.local/lib/python3.8/site-packages/jinja2/environment.py", line 471, in getattr
+    return getattr(obj, attribute)
+  File "/home/oscar/.local/lib/python3.8/site-packages/sqlalchemy/orm/attributes.py", line 287, in __get__
+    return self.impl.get(instance_state(instance), dict_)
+  File "/home/oscar/.local/lib/python3.8/site-packages/sqlalchemy/orm/attributes.py", line 718, in get
+    value = state._load_expired(state, passive)
+  File "/home/oscar/.local/lib/python3.8/site-packages/sqlalchemy/orm/state.py", line 652, in _load_expired
+    self.manager.deferred_scalar_loader(self, toload)
+  File "/home/oscar/.local/lib/python3.8/site-packages/sqlalchemy/orm/loading.py", line 1006, in load_scalar_attributes
+    result = load_on_ident(
+  File "/home/oscar/.local/lib/python3.8/site-packages/sqlalchemy/orm/loading.py", line 200, in load_on_ident
+    return load_on_pk_identity(
+  File "/home/oscar/.local/lib/python3.8/site-packages/sqlalchemy/orm/loading.py", line 286, in load_on_pk_identity
+    return q.one()
+  File "/home/oscar/.local/lib/python3.8/site-packages/sqlalchemy/orm/query.py", line 3490, in one
+    ret = self.one_or_none()
+  File "/home/oscar/.local/lib/python3.8/site-packages/sqlalchemy/orm/query.py", line 3459, in one_or_none
+    ret = list(self)
+  File "/home/oscar/.local/lib/python3.8/site-packages/sqlalchemy/orm/query.py", line 3535, in __iter__
+    return self._execute_and_instances(context)
+  File "/home/oscar/.local/lib/python3.8/site-packages/sqlalchemy/orm/query.py", line 3556, in _execute_and_instances
+    conn = self._get_bind_args(
+  File "/home/oscar/.local/lib/python3.8/site-packages/sqlalchemy/orm/query.py", line 3571, in _get_bind_args
+    return fn(
+  File "/home/oscar/.local/lib/python3.8/site-packages/sqlalchemy/orm/query.py", line 3550, in _connection_from_session
+    conn = self.session.connection(**kw)
+  File "/home/oscar/.local/lib/python3.8/site-packages/sqlalchemy/orm/session.py", line 1138, in connection
+    return self._connection_for_bind(
+  File "/home/oscar/.local/lib/python3.8/site-packages/sqlalchemy/orm/session.py", line 1146, in _connection_for_bind
+    return self.transaction._connection_for_bind(
+  File "/home/oscar/.local/lib/python3.8/site-packages/sqlalchemy/orm/session.py", line 409, in _connection_for_bind
+    self._assert_active()
+  File "/home/oscar/.local/lib/python3.8/site-packages/sqlalchemy/orm/session.py", line 289, in _assert_active
+    raise sa_exc.InvalidRequestError(
+sqlalchemy.exc.InvalidRequestError: This Session's transaction has been rolled back due to a previous exception during flush. To begin a new transaction with this Session, first issue Session.rollback(). Original exception was: (sqlite3.IntegrityError) NOT NULL constraint failed: task.session
+[SQL: INSERT INTO task (uid, task, result, issued, completed, session) VALUES (?, ?, ?, ?, ?, ?)]
+[parameters: ('6ca8ec1efd5bfb4071b7919cb8bad71f', None, 'Error: client returned invalid response: "0"', '2020-11-12 02:30:50.655389', None, None)]
